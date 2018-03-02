@@ -11,8 +11,8 @@ from numpy import zeros, uint8, float32, exp, max, log2, sum, log
 
 ###########################################
 # This method I have taken from my previous assignment in CSE-574
-# Use this method fro reading the gz file of MNIST datasets and take out the 28x28 vector representation
-# of each number and store them in a numpy file for further acess#
+# Use this method for reading the gz file of MNIST datasets and take out the 28x28 vector representation
+# of each number and store them in a numpy file for further access
 #
 
 def read_gz(images,labels):
