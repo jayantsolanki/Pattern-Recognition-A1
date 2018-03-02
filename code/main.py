@@ -27,16 +27,20 @@ except FileNotFoundError:
 	labels = gzip.open('MNIST_Data/t10k-labels-idx1-ubyte.gz', 'rb')
 	(test_images,test_images_label) =read_gz(images,labels);
 	np.savez("testData.npz", test_images=test_images, test_images_label=test_images_label)
+
+############################################### PART 1 Solution###########################################################
 # print(trains_images.shape)
-# print(train_images_label.shape)
-view_image(trains_images[9999,:,:], train_images_label[9999])
-# trains_images = trains_images.reshape([60000,784])#flattening the input array
-# test_images = test_images.reshape([10000,784])
-# trains_images = preprocessing.scale(trains_images)#standardising the image data set with zero mean and unit standard deviation
-# test_images = preprocessing.scale(test_images)
-# trains_images = (trains_images - trains_images.min())/(trains_images.max()-trains_images.min())
-# test_images = (test_images - test_images.min())/(test_images.max()-test_images.min())
-# print(trains_images.shape)
-# print(train_images_label.shape)
-# print(test_images.shape)
-# print(test_images_label.shape)
+#finding and saving mean images of every digits
+mean_train_images = np.zeros((10, 28, 28), dtype=float32) #for storing mean images of the mnist digits, 10 digits in total
+for i in range(10):
+	mean_train_images[i,:,:] = np.mean(trains_images[np.where(train_images_label == i)[0],:,:], axis=0)#find the indices of images of particular label and take average of them
+	# view_image(mean_train_images[i,:,:], str(i)+"-mean") #uncomment this line to save new images
+# print(mean_train_images.shape)
+# view_image(mean_train_images[1,:,:], 1)
+
+#finding and saving standard deviation images of every digits
+std_train_images = np.zeros((10, 28, 28), dtype=float32) #for storing mean images of the mnist digits, 10 digits in total
+for i in range(10):
+	std_train_images[i,:,:] = np.std(trains_images[np.where(train_images_label == i)[0],:,:], axis=0)#find the indices of images of particular label and take average of them
+	# view_image(std_train_images[i,:,:], str(i)+"-std") ##uncomment this line to save new images
+############################################### PART 1 Solution Ends #####################################################

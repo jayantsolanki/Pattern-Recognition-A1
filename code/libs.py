@@ -2,7 +2,7 @@
 #general library file, contains all the methods needed for performing thedigit classiications using 0-1 loss function
 from struct import unpack
 import gzip
-from pylab import imshow, show, cm, matmul
+from pylab import imshow, show, cm, savefig
 # from math import log
 
 # Third-party libraries
@@ -66,10 +66,11 @@ def read_gz(images,labels):
 #function for viewing the image and its label
 #function view_image(image, label="")
 #input : image array and its label
-#output : displays image and its label on the console
+#output : displays image and its label on the console and saves it
 def view_image(image, label=""):
 	"""View a single image."""
 	print("Label: %s" % label)
 	imshow(image, cmap=cm.gray)
+	savefig(str(label)+".jpg")#saing images based upon their lable as their filename
 	show()
 
